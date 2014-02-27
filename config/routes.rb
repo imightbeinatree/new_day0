@@ -5,7 +5,7 @@ NewDay0::Application.routes.draw do
     get 'ajax_new' => 'devise/ajax_registrations#new', as: 'ajax_new'
     get 'json_new' => 'devise/ajax_registrations#json_new', as: 'json_new'
     post 'ajax_create' => 'devise/ajax_registrations#create', as: 'ajax_create'
-
+    get 'ajax_sign_in' => 'devise/ajax_sessions#new', as: 'ajax_sign_in'
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
