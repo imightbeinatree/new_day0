@@ -7,6 +7,8 @@ NewDay0::Application.routes.draw do
     post 'ajax_create' => 'devise/ajax_registrations#create', as: 'ajax_create'
 
   end
+
+  get 'authed_request' => 'home#authed_request', as: 'authed_request'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
