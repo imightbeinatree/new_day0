@@ -20,3 +20,17 @@
   = link_to "Sign in (not yet ajax)", new_user_session_path
   <br />
   = link_to "Sign in with Facebook (not yet ajax)", user_omniauth_authorize_path(:facebook)
+
+%h2 Authed Request
+= link_to "Make an authed request", authed_request_path, remote: true, id: "authed_request"
+
+:javascript
+  $(document).ready(function(){
+    $("#authed_request").bind("ajax:success", function(event, data, status, xhr){
+       alert("here is the authed_request return");
+       alert(data)
+    }).bind("ajax:error", function(event, data, status, xhr){
+       alert("error, here is the authed_request error return");  
+       alert(data)
+    });
+  });
