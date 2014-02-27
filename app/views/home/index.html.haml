@@ -7,3 +7,16 @@
   or
   = link_to "Sign in", new_user_session_path
   = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+
+%h2 Ajax Links  
+- if user_signed_in?
+  = "Signed in as #{current_user.email}. Not you?"
+  = link_to "Sign out (not yet ajax)", destroy_user_session_path,:method => :delete
+- else
+  = link_to "Sign up (ajax and json)", ajax_new_path
+  <br />
+  = link_to "Sign up (just json)", json_new_path
+  <br/ >or<br />
+  = link_to "Sign in (not yet ajax)", new_user_session_path
+  <br />
+  = link_to "Sign in with Facebook (not yet ajax)", user_omniauth_authorize_path(:facebook)

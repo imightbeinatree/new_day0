@@ -1,7 +1,13 @@
 NewDay0::Application.routes.draw do
   root :to => 'home#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  get 'ajax_sign_up' => 'home#ajax_sign_up'
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :ajax_registrations => "devise/ajax_registrations" }
+  devise_scope :user do
+    get 'ajax_new' => 'devise/ajax_registrations#new', as: 'ajax_new'
+    get 'json_new' => 'devise/ajax_registrations#json_new', as: 'json_new'
+    post 'ajax_create' => 'devise/ajax_registrations#create', as: 'ajax_create'
+
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
