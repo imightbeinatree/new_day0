@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: new_day0_development
   pool: 5
-  username: michaelorr
+  username: postgres
   password: 
   host: localhost
 
