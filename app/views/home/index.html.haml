@@ -1,17 +1,17 @@
 %h1 new_day0
 - if user_signed_in?
   = "Signed in as #{current_user.email}. Not you?"
-  = link_to "Sign out", destroy_user_session_path,:method => :delete
+  = link_to "Sign out", "http://33.33.33.70:81"+destroy_user_session_path,:method => :delete
 - else
   = link_to "Sign up", new_user_registration_path
   or
   = link_to "Sign in", new_user_session_path
-  = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+  = link_to "Sign in with Facebook", "http://33.33.33.70:81"+user_omniauth_authorize_path(:facebook)
 
 %h2 Ajax Links  
 - if user_signed_in?
   = "Signed in as #{current_user.email}. Not you?"
-  = link_to "Sign out (not yet ajax)", destroy_user_session_path,:method => :delete
+  = link_to "Sign out (not yet ajax)", "http://33.33.33.70:81"+destroy_user_session_path,:method => :delete
 - else
   = link_to "Sign up (ajax and json)", ajax_new_path
   <br />
@@ -22,7 +22,7 @@
   = link_to "Sign in with Facebook (not yet ajax)", user_omniauth_authorize_path(:facebook)
 
 %h2 Authed Request
-= link_to "Make an authed request", authed_request_path, remote: true, id: "authed_request"
+= link_to "Make an authed request", "http://33.33.33.70:81"+authed_request_path, remote: true, id: "authed_request"
 
 :javascript
   $(document).ready(function(){

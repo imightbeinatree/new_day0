@@ -1,5 +1,5 @@
 <h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: ajax_create_path(resource_name, format: 'json'), remote: true) do |f| %>
+<%= form_for(resource, as: resource_name, url: "http://33.33.33.70:81"+ajax_create_path(resource_name, format: 'json'), remote: true) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
@@ -18,10 +18,18 @@
 
 <script>
 $(document).ready(function(){
+	$.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
 	$("#new_user").bind("ajax:success", function(event, data, status, xhr){
-	   alert("here is the sign up return\n"+data);
+	   console.log("here is the sign up return");
+	   console.log(data)
 	}).bind("ajax:error", function(event, data, status, xhr){
-	   alert("error, here is the sign up error return\n"+data);  
+	   console.log("error, here is the sign up error return");  
+	   console.log(data)
 	});
 });
 </script>
