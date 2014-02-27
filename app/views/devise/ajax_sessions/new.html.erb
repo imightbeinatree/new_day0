@@ -1,6 +1,6 @@
 <h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name, format: 'json'), remote: true) do |f| %>
+<%= form_for(resource, as: resource_name, url: ajax_session_create_path(resource_name, format: 'json'), remote: true) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
@@ -15,3 +15,13 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+$(document).ready(function(){
+	$("#new_user").bind("ajax:success", function(event, data, status, xhr){
+	   alert("here is the sign up return\n"+data);
+	}).bind("ajax:error", function(event, data, status, xhr){
+	   alert("error, here is the sign up error return\n"+data);  
+	});
+});
+</script>
