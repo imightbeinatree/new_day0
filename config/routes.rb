@@ -1,11 +1,12 @@
 NewDay0::Application.routes.draw do
   root :to => 'home#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :ajax_registrations => "devise/ajax_registrations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :ajax_registrations => "devise/ajax_registrations", :ajax_sessions => "devise/ajax_sessions"  }
   devise_scope :user do
-    get 'ajax_new' => 'devise/ajax_registrations#new', as: 'ajax_new'
-    get 'json_new' => 'devise/ajax_registrations#json_new', as: 'json_new'
-    post 'ajax_create' => 'devise/ajax_registrations#create', as: 'ajax_create'
-
+    get 'ajax_new' => 'devise/ajax_registrations#new', as: 'ajax_registration_new'
+    get 'json_new' => 'devise/ajax_registrations#json_new', as: 'json_registration_new'
+    post 'ajax_create' => 'devise/ajax_registrations#create', as: 'ajax_registration_create'
+    get 'ajax_session_new' => 'devise/ajax_sessions#new', as: 'ajax_session_new'
+    post 'ajax_session_create' => 'devise/ajax_sessions#new', as: 'ajax_session_create'
   end
 
   get 'authed_request' => 'home#authed_request', as: 'authed_request'
