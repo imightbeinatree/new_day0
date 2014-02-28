@@ -6,7 +6,8 @@ NewDay0::Application.routes.draw do
     get 'json_new' => 'devise/ajax_registrations#json_new', as: 'json_registration_new'
     post 'ajax_create' => 'devise/ajax_registrations#create', as: 'ajax_registration_create'
     get 'ajax_session_new' => 'devise/ajax_sessions#new', as: 'ajax_session_new'
-    post 'ajax_session_create' => 'devise/ajax_sessions#new', as: 'ajax_session_create'
+    post 'ajax_session_create' => 'devise/ajax_sessions#create', as: 'ajax_session_create'
+
   end
 
   get 'authed_request' => 'home#authed_request', as: 'authed_request'

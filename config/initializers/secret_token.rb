@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-NewDay0::Application.config.secret_key_base = 'ddfef114df069fa584382c649d4e13b69ad9bb6442d9bc658118fd9b26cfd6793cee648f2980009b692af205a152c08ab75b599f61a4aa38c919a749f7894fe0'
+NewDay0::Application.config.secret_key_base = 'b3d58617ccf58d423094f6f9914c334dc271d8dabc0ba0daa107aa7b45400d868f42e43d4d4cfc1919940b9585b1a6ea423c8bf0b8ac8b28b206039c774d13f0'
