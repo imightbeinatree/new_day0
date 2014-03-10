@@ -1,17 +1,17 @@
 %h1 new_day0
 - if user_signed_in?
   = "Signed in as #{current_user.email}. Not you?"
-  = link_to "Sign out", "http://33.33.33.70:81"+destroy_user_session_path,:method => :delete
+  = link_to "Sign out", "http://api.newdayzero.com"+destroy_user_session_path,:method => :delete
 - else
   = link_to "Sign up", new_user_registration_path
   or
   = link_to "Sign in", new_user_session_path
-  = link_to "Sign in with Facebook", "http://33.33.33.70:81"+user_omniauth_authorize_path(:facebook)
+  = link_to "Sign in with Facebook", "http://api.newdayzero.com"+auth_provider_user_path(:facebook)
 
 %h2 Ajax Links  
 - if user_signed_in?
   = "Signed in as #{current_user.email}. Not you?"
-  = link_to "Sign out (not yet ajax)", "http://33.33.33.70:81"+destroy_user_session_path,:method => :delete
+  = link_to "Sign out (not yet ajax)", "http://api.newdayzero.com"+destroy_user_session_path,:method => :delete
 - else
   = link_to "Sign up (ajax and json)", ajax_registration_new_path
   <br />
@@ -19,18 +19,17 @@
   <br/ >or<br />
   = link_to "Sign in", ajax_session_new_path
   <br />
-  = link_to "Sign in with Facebook (not yet ajax)", user_omniauth_authorize_path(:facebook)
+  = link_to "Sign in with Facebook (not yet ajax)", auth_provider_user_path(:facebook)
+  = render partial: "facebook_login"
 
-%h2 Authed Request
-= link_to "Make an authed request", "http://33.33.33.70:81"+authed_request_path, remote: true, id: "authed_request"
+%div{:"ng-controller" => "HomeCtrl" }
+  %h2 Authed Request
+  = link_to "Make an authed request", "#", :id => "authed_request", "ng-click" => "getData()"
+  <br /><br />
+  {{data}}
+  <br /><br />
+  {{status}}
 
 :javascript
   $(document).ready(function(){
-    $("#authed_request").bind("ajax:success", function(event, data, status, xhr){
-       alert("here is the authed_request return");
-       alert(data)
-    }).bind("ajax:error", function(event, data, status, xhr){
-       alert("error, here is the authed_request error return");  
-       alert(data)
-    });
   });

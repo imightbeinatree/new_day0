@@ -1,35 +1,19 @@
-<h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: "http://33.33.33.70:81"+ajax_registration_create_path(resource_name, format: 'json'), remote: true) do |f| %>
-  <%= devise_error_messages! %>
+<div ng-controller="UserCtrl">
+  <h2>Sign up</h2>
+  <form ng-submit="registration_submit()">
+    <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="✓">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <div><label for="user_email">Email</label><br>
+    <input autofocus="autofocus" id="user_email" name="user[email]" type="email" value=""></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <div><label for="user_password">Password</label><br>
+      <input autocomplete="off" id="user_password" name="user[password]" type="password"></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <div><label for="user_password_confirmation">Password confirmation</label><br>
+      <input autocomplete="off" id="user_password_confirmation" name="user[password_confirmation]" type="password"></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
+    <div><input name="commit" type="submit" value="Sign up"></div>
+  </form>
+</div>
 <%= render "devise/shared/links" %>
-
-<script>
-$(document).ready(function(){
-	// $.ajaxSetup({
- //    headers: {
- //      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
- //    }
- //  });
-
-	$("#new_user").bind("ajax:success", function(event, data, status, xhr){
-	   console.log("here is the sign up return");
-	   console.log(data)
-	}).bind("ajax:error", function(event, data, status, xhr){
-	   console.log("error, here is the sign up error return");  
-	   console.log(data)
-	});
-});
-</script>

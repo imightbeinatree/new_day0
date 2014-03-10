@@ -8,6 +8,7 @@ Vagrant::Config.run do |config|
 
   config.ssh.private_key_path = File.join(ENV['HOME'], '.ssh', 'cs_vagrant.pem')
   config.vm.network :hostonly, "33.33.33.70"
+  config.vm.network(:bridged, :bridge => "en1: Wi-Fi (AirPort)")
   config.vm.share_folder("v-root", "/srv/#{org}", ".", :nfs => true)
   
   config.vm.customize ["modifyvm", :id, "--memory", "1024", "--name", "New Day 0","--cpus", "2"]

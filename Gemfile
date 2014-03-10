@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'angularjs-rails'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -52,7 +54,7 @@ gem "devise"
 gem "cancan"
 gem "rolify"
 gem "omniauth"
-gem "omniauth-facebook"
+gem "omniauth-facebook", '= 1.4.0'
 gem "haml"
 gem "paperclip"
 group :test do
