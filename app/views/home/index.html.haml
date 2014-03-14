@@ -26,6 +26,10 @@
   %h2 Authed Request
   = link_to "Make an authed request", "#", :id => "authed_request", "ng-click" => "getData()"
   <br /><br />
+  %h2 Twitter Auth
+  =# link_to "Make a twitter auth", "#", "ng-click" => "twitter_sign_in_submit()"
+  = link_to "Make a twitter auth", "#", "ng-click" => "open()"
+  <br /><br />
   {{data}}
   <br /><br />
   {{status}}
